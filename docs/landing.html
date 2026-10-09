@@ -1,0 +1,390 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Calculator, 
+  FileText, 
+  CheckCircle, 
+  AlertCircle, 
+  PieChart, 
+  User, 
+  DownloadCloud, 
+  ChevronRight,
+  DollarSign,
+  ArrowRight,
+  ShieldCheck,
+  RefreshCw,
+  Building
+} from 'lucide-react';
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [regimen, setRegimen] = useState('actividad_empresarial');
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncComplete, setSyncComplete] = useState(false);
+
+  // Estados de cálculo de impuestos
+  const [ingresosTotales, setIngresosTotales] = useState(150000);
+  const [deduccionesTotales, setDeduccionesTotales] = useState(85000);
+  const [retenciones, setRetenciones] = useState(5000);
+
+  const calcularImpuestos = () => {
+    let baseGravable = 0;
+    let isrAPagar = 0;
+    let ivaAPagar = 0; // Asumiendo IVA al 16% simplificado
+
+    if (regimen === 'actividad_empresarial') {
+      // Cálculo simplificado para Actividad Empresarial (Ingresos - Gastos)
+      baseGravable = ingresosTotales - deduccionesTotales;
+      // Simulando una tasa impositiva escalonada (aprox 30% para simplificar el demo)
+      isrAPagar = baseGravable > 0 ? (baseGravable * 0.30) - retenciones : 0;
+      
+      // IVA simplificado: IVA trasladado - IVA acreditable
+      const ivaTrasladado = ingresosTotales * 0.16;
+      const ivaAcreditable = deduccionesTotales * 0.16;
+      ivaAPagar = ivaTrasladado - ivaAcreditable;
+
+    } else if (regimen === 'resico') {
+      // RESICO no deduce gastos para ISR, se aplica tasa directa al ingreso (ej. 1.5%)
+      baseGravable = ingresosTotales;
+      isrAPagar = (baseGravable * 0.015) - retenciones;
+      
+      // IVA funciona igual en RESICO (Trasladado - Acreditable)
+      const ivaTrasladado = ingresosTotales * 0.16;
+      const ivaAcreditable = deduccionesTotales * 0.16;
+      ivaAPagar = ivaTrasladado - ivaAcreditable;
+    }
+
+    return {
+      baseGravable: Math.max(0, baseGravable),
+      isr: Math.max(0, isrAPagar),
+      iva: Math.max(0, ivaAPagar),
+      total: Math.max(0, isrAPagar) + Math.max(0, ivaAPagar)
+    };
+  };
+
+  const impuestos = calcularImpuestos();
+
+  const formatCurrency = (val) => {
+    return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(val);
+  };
+
+  const handleSyncSAT = () => {
+    setIsSyncing(true);
+    setSyncComplete(false);
+    // Simula una llamada API al SAT para descargar facturas (XML)
+    setTimeout(() => {
+      setIsSyncing(false);
+      setSyncComplete(true);
+      // Variar números ligeramente para efecto de demostración
+      setIngresosTotales(158400);
+      setDeduccionesTotales(92300);
+    }, 2500);
+  };
+
+  const Sidebar = () => (
+    <div className="w-64 bg-slate-900 min-h-screen text-slate-300 flex flex-col hidden md:flex">
+      <div className="p-6 flex items-center gap-3 border-b border-slate-800">
+        <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+          <ShieldCheck className="text-white" size={20} />
+        </div>
+        <span className="text-xl font-bold text-white tracking-tight">DeclaraFácil</span>
+      </div>
+      
+      <div className="p-4 flex flex-col gap-2 flex-grow">
+        <button 
+          onClick={() => setActiveTab('dashboard')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'dashboard' ? 'bg-emerald-500/10 text-emerald-400' : 'hover:bg-slate-800'}`}
+        >
+          <PieChart size={18} /> Resumen Fiscal
+        </button>
+        <button 
+          onClick={() => setActiveTab('declarar')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'declarar' ? 'bg-emerald-500/10 text-emerald-400' : 'hover:bg-slate-800'}`}
+        >
+          <Calculator size={18} /> Nueva Declaración
+        </button>
+        <button className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors">
+          <FileText size={18} /> Historial Acuses
+        </button>
+        <button className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition-colors">
+          <Building size={18} /> Facturas (CFDI)
+        </button>
+      </div>
+
+      <div className="p-6 border-t border-slate-800">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center">
+            <User size={20} />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-white">Juan Pérez</p>
+            <p className="text-xs text-slate-500">RFC: PEAJ890521XXX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const DashboardView = () => (
+    <div className="p-8 max-w-6xl mx-auto animate-in fade-in duration-500">
+      <div className="flex justify-between items-end mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">Resumen Fiscal de Octubre</h1>
+          <p className="text-slate-500">Monitorea tus ingresos y egresos en tiempo real.</p>
+        </div>
+        <button 
+          onClick={handleSyncSAT}
+          disabled={isSyncing}
+          className="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-50 shadow-sm transition-all"
+        >
+          <RefreshCw size={16} className={`${isSyncing ? 'animate-spin text-emerald-500' : ''}`} />
+          {isSyncing ? 'Conectando con SAT...' : 'Sincronizar CFDI'}
+        </button>
+      </div>
+
+      {syncComplete && (
+        <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3 text-emerald-700">
+          <CheckCircle size={20} />
+          <p className="text-sm font-medium">Sincronización exitosa. Se descargaron 42 facturas emitidas y 18 facturas recibidas.</p>
+        </div>
+      )}
+
+      {/* Tarjetas de Métricas */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+            <DollarSign size={20} />
+          </div>
+          <p className="text-sm text-slate-500 font-medium mb-1">Ingresos Cobrados (Base ISR)</p>
+          <h3 className="text-3xl font-bold text-slate-900">{formatCurrency(ingresosTotales)}</h3>
+        </div>
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div className="w-10 h-10 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center mb-4">
+            <FileText size={20} />
+          </div>
+          <p className="text-sm text-slate-500 font-medium mb-1">Deducciones Autorizadas</p>
+          <h3 className="text-3xl font-bold text-slate-900">{formatCurrency(deduccionesTotales)}</h3>
+        </div>
+        <div className="bg-slate-900 p-6 rounded-2xl shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <Calculator size={64} className="text-white" />
+          </div>
+          <p className="text-sm text-slate-400 font-medium mb-1">Impuestos Estimados (Mes)</p>
+          <h3 className="text-3xl font-bold text-white mb-2">{formatCurrency(impuestos.total)}</h3>
+          <p className="text-xs text-emerald-400 font-medium">ISR: {formatCurrency(impuestos.isr)} | IVA: {formatCurrency(impuestos.iva)}</p>
+        </div>
+      </div>
+
+      {/* Configuración de Régimen */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8">
+        <h3 className="text-lg font-bold text-slate-900 mb-4">Motor de Cálculo: Régimen Fiscal Activo</h3>
+        <p className="text-sm text-slate-500 mb-6">El cálculo de tus impuestos varía drásticamente según el régimen en el que estés inscrito en el RFC.</p>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div 
+            onClick={() => setRegimen('actividad_empresarial')}
+            className={`cursor-pointer border-2 rounded-xl p-4 transition-all ${regimen === 'actividad_empresarial' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 hover:border-emerald-200'}`}
+          >
+            <div className="flex justify-between items-start mb-2">
+              <h4 className="font-semibold text-slate-900">Actividad Empresarial y Profesional</h4>
+              {regimen === 'actividad_empresarial' && <CheckCircle size={18} className="text-emerald-500" />}
+            </div>
+            <p className="text-xs text-slate-600">Calcula el ISR sobre la utilidad (Ingresos - Deducciones). Permite deducir gastos operativos.</p>
+          </div>
+          
+          <div 
+            onClick={() => setRegimen('resico')}
+            className={`cursor-pointer border-2 rounded-xl p-4 transition-all ${regimen === 'resico' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 hover:border-emerald-200'}`}
+          >
+            <div className="flex justify-between items-start mb-2">
+              <h4 className="font-semibold text-slate-900">Régimen Simplificado de Confianza (RESICO)</h4>
+              {regimen === 'resico' && <CheckCircle size={18} className="text-emerald-500" />}
+            </div>
+            <p className="text-xs text-slate-600">Calcula el ISR directamente sobre ingresos brutos (1% - 2.5%). NO considera deducciones para ISR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const DeclaracionWizard = () => {
+    const [step, setStep] = useState(1);
+
+    return (
+      <div className="p-8 max-w-4xl mx-auto animate-in slide-in-from-right-8 duration-500">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Asistente de Declaración Mensual</h1>
+        <p className="text-slate-500 mb-8">Revisa los datos consolidados y envía tu declaración al SAT en un clic.</p>
+
+        {/* Steps Tracker */}
+        <div className="flex items-center mb-10">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-500'}`}>1</div>
+          <div className={`flex-grow h-1 mx-2 ${step >= 2 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-500'}`}>2</div>
+          <div className={`flex-grow h-1 mx-2 ${step >= 3 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-500'}`}>3</div>
+        </div>
+
+        {/* Step 1: Revisión de CFDI */}
+        {step === 1 && (
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+            <h3 className="text-xl font-bold text-slate-900 mb-6">Paso 1: Clasificación de Comprobantes</h3>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <div>
+                  <h4 className="font-semibold text-slate-800">CFDI de Ingresos (Facturas Emitidas)</h4>
+                  <p className="text-sm text-slate-500">42 facturas identificadas como "Pago en una sola exhibición" (PUE).</p>
+                </div>
+                <span className="font-bold text-lg text-slate-900">{formatCurrency(ingresosTotales)}</span>
+              </div>
+              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <div>
+                  <h4 className="font-semibold text-slate-800">CFDI de Egresos (Deducciones Autorizadas)</h4>
+                  <p className="text-sm text-slate-500">18 facturas catalogadas como "Gastos en General" y "Adquisición de mercancías".</p>
+                </div>
+                <span className="font-bold text-lg text-slate-900">{formatCurrency(deduccionesTotales)}</span>
+              </div>
+              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <div>
+                  <h4 className="font-semibold text-slate-800">ISR e IVA Retenido</h4>
+                  <p className="text-sm text-slate-500">Impuestos retenidos por clientes institucionales o plataformas.</p>
+                </div>
+                <span className="font-bold text-lg text-rose-600">-{formatCurrency(retenciones)}</span>
+              </div>
+            </div>
+            
+            <div className="flex justify-end">
+              <button onClick={() => setStep(2)} className="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-slate-800 transition-colors">
+                Confirmar y Calcular <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 2: Cálculo y Borrador */}
+        {step === 2 && (
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+            <div className="flex items-start justify-between mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Paso 2: Borrador de Declaración</h3>
+                <p className="text-sm text-slate-500">Cálculo basado en el régimen: <strong>{regimen === 'resico' ? 'RESICO' : 'Actividad Empresarial'}</strong></p>
+              </div>
+              <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                <AlertCircle size={14} /> Vista Previa
+              </div>
+            </div>
+            
+            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 mb-8 font-mono text-sm">
+              <div className="flex justify-between mb-2">
+                <span className="text-slate-600">Base Gravable (ISR):</span>
+                <span className="font-bold">{formatCurrency(impuestos.baseGravable)}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span className="text-slate-600">Impuesto Sobre la Renta (ISR) Determinado:</span>
+                <span className="font-bold">{formatCurrency(impuestos.isr + retenciones)}</span>
+              </div>
+              <div className="flex justify-between mb-4 pb-4 border-b border-slate-300">
+                <span className="text-slate-600">(-) ISR Retenido:</span>
+                <span className="font-bold text-rose-600">-{formatCurrency(retenciones)}</span>
+              </div>
+              <div className="flex justify-between mb-6">
+                <span className="text-slate-800 font-bold">ISR a Pagar:</span>
+                <span className="font-bold text-emerald-600 text-lg">{formatCurrency(impuestos.isr)}</span>
+              </div>
+
+              <div className="flex justify-between mb-2 mt-4">
+                <span className="text-slate-600">IVA Trasladado (Cobrado):</span>
+                <span className="font-bold">{formatCurrency(ingresosTotales * 0.16)}</span>
+              </div>
+              <div className="flex justify-between mb-4 pb-4 border-b border-slate-300">
+                <span className="text-slate-600">(-) IVA Acreditable (Pagado en gastos):</span>
+                <span className="font-bold text-rose-600">-{formatCurrency(deduccionesTotales * 0.16)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-800 font-bold">IVA a Pagar:</span>
+                <span className="font-bold text-emerald-600 text-lg">{formatCurrency(impuestos.iva)}</span>
+              </div>
+            </div>
+
+            <div className="flex justify-between bg-slate-900 text-white p-6 rounded-xl mb-8 items-center">
+              <div>
+                <p className="text-sm text-slate-400">Total de Contribuciones a Pagar</p>
+                <h2 className="text-4xl font-black">{formatCurrency(impuestos.total)}</h2>
+              </div>
+              <Calculator size={48} className="text-slate-700 opacity-50" />
+            </div>
+            
+            <div className="flex justify-between">
+              <button onClick={() => setStep(1)} className="px-6 py-3 font-medium text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">Atrás</button>
+              <button onClick={() => setStep(3)} className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-500/30">
+                Firmar y Enviar al SAT
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: Éxito y Acuse */}
+        {step === 3 && (
+          <div className="bg-white p-12 rounded-2xl shadow-sm border border-slate-100 text-center animate-in zoom-in duration-300">
+            <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="text-emerald-500" size={48} />
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">¡Declaración Presentada con Éxito!</h2>
+            <p className="text-slate-500 mb-8 max-w-md mx-auto">
+              Tu declaración mensual ha sido firmada con tu e.firma y recibida por el SAT. Se ha generado tu línea de captura para el pago.
+            </p>
+            
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 inline-block text-left mb-8">
+              <p className="text-sm text-slate-500 mb-1">Folio de Recepción SAT:</p>
+              <p className="font-mono font-bold text-slate-900 mb-4">OP-{Math.floor(Math.random() * 100000000)}</p>
+              <p className="text-sm text-slate-500 mb-1">Total a Pagar:</p>
+              <p className="font-bold text-xl text-emerald-600">{formatCurrency(impuestos.total)}</p>
+            </div>
+
+            <div className="flex justify-center gap-4">
+              <button className="flex items-center gap-2 bg-white border-2 border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-medium hover:border-slate-300 hover:bg-slate-50 transition-colors">
+                <DownloadCloud size={18} /> Descargar Acuse (PDF)
+              </button>
+              <button onClick={() => {setStep(1); setActiveTab('dashboard');}} className="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-slate-800 transition-colors">
+                Volver al Dashboard
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex min-h-screen bg-slate-50 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+      <Sidebar />
+      
+      {/* Mobile Nav Header */}
+      <div className="md:hidden fixed top-0 w-full bg-slate-900 text-white p-4 z-50 flex items-center gap-3">
+        <ShieldCheck size={24} className="text-emerald-400" />
+        <span className="font-bold text-lg">DeclaraFácil</span>
+      </div>
+
+      <main className="flex-grow md:ml-0 mt-16 md:mt-0 pb-20 md:pb-0">
+        {activeTab === 'dashboard' ? <DashboardView /> : <DeclaracionWizard />}
+      </main>
+
+      {/* Mobile Bottom Bar */}
+      <div className="md:hidden fixed bottom-0 w-full bg-white border-t border-slate-200 flex justify-around p-3 z-50">
+        <button 
+          onClick={() => setActiveTab('dashboard')}
+          className={`flex flex-col items-center p-2 ${activeTab === 'dashboard' ? 'text-emerald-600' : 'text-slate-400'}`}
+        >
+          <PieChart size={24} />
+          <span className="text-[10px] mt-1 font-medium">Resumen</span>
+        </button>
+        <button 
+          onClick={() => setActiveTab('declarar')}
+          className={`flex flex-col items-center p-2 ${activeTab === 'declarar' ? 'text-emerald-600' : 'text-slate-400'}`}
+        >
+          <Calculator size={24} />
+          <span className="text-[10px] mt-1 font-medium">Declarar</span>
+        </button>
+      </div>
+    </div>
+  );
+}

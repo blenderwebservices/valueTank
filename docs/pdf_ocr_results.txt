@@ -1,0 +1,345 @@
+
+================== PAGE 1 ==================
+El Código de
+la Valuación
+Cómo dominar tus números y defender
+tu valor frente a los inversionistas.
+
+================== PAGE 2 ==================
+Monto Solicitado
+$1,000,000 MXN
+$10,000,000 MXN
+Equity Cedido
+10%
+La Valuación Implícita. Cada oferta que
+presentas no es solo una petición de
+capital; es una declaración absoluta del
+valor total de tu empresa.
+Fórmula central: Monto Solicitado / Porcentaie Ofrecido = Valuación Total.
+
+================== PAGE 3 ==================
+Múltiplos de Mercado
+• Mecanismo: Multiplica una métrica clave
+(Ventas/EBITDA) por un factor de la
+industria.
+• Cuándo usarlo: Negocios con ventas
+constantes; industrias bien documentadas.
+El favorito en Shark Tank.
+Valor en Libros (Activos)
+• Mecanismo: Suma total de bienes
+(maquinaria, efectivo, software) menos todas
+las deudas.
+• Cuándo usarlo: Bienes raíces, industriales o
+empresas en riesgo. No refleja el valor de
+marca.
+Flujo de Caja
+Descontado (DCF)
+• Mecanismo: Proyecta el efectivo futuro (5
+años) y calcula su valor presente aplicando
+una tasa de descuento.
+• Cuándo usarlo: Empresas maduras o
+startups tecnológicas con proyecciones
+predecibles y alto potencial.
+Método VC
+(Capital de Riesgo)
+• Mecanismo: Estima el valor de salida futuro y
+calcula hacia atrás el % necesario para un
+retorno 10x.
+• Cuándo usarlo: Startups pre-semilla/semilla
+sin ganancias constantes.
+
+================== PAGE 4 ==================
+El Motor Actual
+Ventas anuales,
+ganancias netas o
+EBITDA real de la
+empresa.
+(Ejemplo: $2M MXN
+de EBITDA)
+X
+El Multiplicador
+del Mercado
+El factor promedio al
+que se venden
+empresas similares
+en el sector.
+(Ejemplo: 5x para
+software)
+El Valor Real
+El resultado
+aceptado por los
+inversionistas.
+(Resultado:
+Empresa de $10M
+MXN)
+Este método exige realidad. No puedes inflar tu valuación si tus ventas
+anuales o tu EBITDA no respaldan el multiplicador de tu industria.
+
+================== PAGE 5 ==================
+VALUACIÓN FINANCIERA
+MÁRGENES DE
+GANANCIA
+Métrica: Bruta y
+Neta.
+Impacto: Demuestra
+qué proporción de
+cada venta se
+convierte en
+ganancia real tras
+cubrir costos.
+EFICIENCIA DE
+ADQUISICIÓN (CAC)
+Métrica: Costo de
+Adquisición por
+Cliente.
+Impacto: Mide
+exactamente cuánto
+capital se quema
+para atraer a un
+nuevo comprador.
+RETENCIÓN
+Métrica: Porcentaje
+de Recompra.
+Impacto: Refleja la
+fidelidad del cliente y
+garantiza un flujo de
+ventas recurrentes
+sostenible.
+
+================== PAGE 6 ==================
+El Efecto Multiplicador
+Empresa A
+Ventas: $5M Deuda: Cero Márgenes: Altos CAC: Bajo
+Empresa B
+Ventas: $5M Deuda: Alta Márgenes: Bajos CAC: Alto
+Obtiene un múltiplo premium en su valuación. Los
+inversionistas pagan por rentabilidad comprobada.
+DEUDA
+COSTOS
+INEFICIENCIA
+Sufre una penalización del múltiplo. El alto costo
+operativo destruve el valor de las ventas.
+Las métricas operativas son la base que valida cualquier método financiero. Un control estricto de
+costos operativos y deuda cero justifica que exijas un precio mayor frente a los tiburones.
+
+================== PAGE 7 ==================
+El Semáforo del
+Inversionista
+Justa / Atractiva
+La cifra resulta de multiplicar
+las ventas reales por el factor
+de industria.
+La empresa posee deuda cero
+y el precio está respaldado por
+el valor de sus activos o
+ganancias.
+Ambiciosa Respaldada
+El múltiplo exigido es superior
+al promedio.
+Se justifica mediante márgenes
+de ganancia inusualmente altos,
+un CAC minúsculo o un porcentaie
+de recompra extraordinario.
+Pretenciosa
+Desconectada de la realidad
+operativa.
+El precio exigido asume
+múltiplos masivos sin ventas
+que lo respalden o ignora por
+completo los pasivos
+actuales.
+
+================== PAGE 8 ==================
+Radiografía de una
+Valuación Pretenciosa
+Ficción del Múltiplo
+Exigir un valor basado en
+múltiplos de mercado muy
+superiores al promedio, sin
+el nivel de ventas real para
+sostenerlo.
+SO.OK
+$ VALOR PRETENDIDO
+Márgenes Asfixiados
+Pretender un precio premium
+mientras se mantienen costos
+operativos altos y márgenes de
+ganancia raquíticos.
+Amnesia de Pasivos
+Fijar una valuación basándose
+en los activos brutos,
+ignorando estratégicamente el
+nivel de deuda actual.
+ACTIVOS / VENTAS REALES
+Alucinación VC
+Presentar proyecciones
+futuras (DCF o VC)
+totalmente desconectadas
+del potencial real de tracción
+y crecimiento.
+
+================== PAGE 9 ==================
+El Escuadrón
+de Respaldo
+El Mentor
+(Emprendedor Exitoso)
+Enfoque: Visión Holística y
+Estratégica
+Aporte principal: Perspectiva de
+vida, gestión de incertidumbre,
+red de contactos y ayuda para
+"pensar mejor" basándose en su
+propio camino recorrido.
+El Asesor / Consultor
+Financiero
+Enfoque: Ejecución Táctica y
+Conocimiento Técnico.
+Aporte principal: Resolución de
+problemas delimitados:
+auditorías, modelos financieros,
+provecciones de flujo de caja y
+valuación formal pre-ronda.
+
+================== PAGE 10 ==================
+Guía de Apoyo Estratégico:
+Mentores vs. Asesores Financieros
+Variable
+Etapa Ideal del Negocio
+Consejos Asesores
+(Advisory Boards)
+Mentores (Founders)
+Etapa Semilla / Validación
+(afinar el modelo y evitar
+errores iniciales).
+Ideal para el perfil comercial o
+con experiencia directa en la
+industria.
+Asociaciones (ASEM),
+incubadoras, aceleradoras y
+redes de impacto (Endeavor).
+Asesores Financieros
+Etapa de Crecimiento /
+Levantamiento de Capital
+(profesionalizar métricas y
+gobierno corporativo).
+Ideal para el perfil técnico en
+estructuración financiera.
+¿Dónde encontrarlos?
+Redes profesionales (Linkedln),
+filtrando por ejecutivos de
+industria o despachos
+especializados.
+
+================== PAGE 11 ==================
+Altruista / Voluntariado
+Contexto: Frecuente en
+etapas iniciales.
+Ecosistema: Programas
+públicos, incubadoras o
+redes universitarias.
+Honorarios / Retainer
+Contexto: Para ejecución
+técnica delimitada.
+Ecosistema: Asesores y
+consultores financieros
+cobrando por proyecto, por
+hora, o con un iguala
+mensual (retainer).
+Participación
+Accionaria (Equity)
+Contexto: Para asesores
+estratégicos continuos y de
+alto nivel.
+Modelo Estándar: Entre
+0.25% y 1% de acciones con
+vesting a 1-2 años.
+Herramienta: Acuerdos
+formales como el contrato
+FAST (Founder Advisor
+Standard Template).
+
+================== PAGE 12 ==================
+Arquitectura del
+Sistema ValuaTank
+Módulo 1:
+Calculadora de
+Oferta
+Input de Pitch
+Módulo 2:
+Motor
+Financiero
+Selección de Método
+(Múltiplos/DCF)
+Módulo 3:
+Calificador
+Operativo
+Ajuste de Márgenes
+y CAC
+Módulo 4:
+Reporte de
+Tanque
+Semáforo y
+Escenarios
+Una app diseñada para que los emprendedores calculen su valuación implícita y
+determinen si su precio es sustentable antes de entrar al tanque.
+
+================== PAGE 13 ==================
+Módulo 1: Pitch Calculator
+Módulo 2: Selector Financiero
+Capital Solicitado ($)
+Ingresar Monto
+Equity Cedido (%)
+Ingresar Porcentaje
+Selección de Etapa
+Madura
+Crecimiento
+Semilla
+Active Field (Múltiplos de Mercado)
+Ventas
+Factor de Industria
+Valuación
+Implícita
+Inicial
+$
+Valor Financiero
+de Referencia
+§
+
+================== PAGE 14 ==================
+Módulo 3: Evaluador de Salud
+Módulo 4: Dashboard de
+Negociación
+Márgenes (%)
+CAC ($)
+Recompra (%)
+Nivel de Deuda ($)
+Ejecutando algoritmo de ajuste.
+Deuda cero detectada: Incremento
+positivo al múltiplo.
+Generador de Escenarios
+Para conservar esta valuación con
+tus métricas actuales, deberías
+solicitar SX por el Y%.
+
+================== PAGE 15 ==================
+El Checklist Definitivo
+del Founder
+Paso 1: Conoce tu sombra
+matemática.
+Divide tu petición de capital entre el equity
+ofrecido. Conoce tu valuación implícita de
+memoria.
+Paso 3: Domina la
+eficiencia operativa.
+Asegura márgenes altos, CAC
+controlado y deuda cero para justificar
+un multiplicador premium.
+Paso 2: Respalda con la
+ciencia adecuada.
+Alinea tu etapa de negocio con un método
+formal (Múltiplos, DCF, Valor en Libros o VC).
+Paso 4; Ficha a tu
+Paso 4: Ficha a tu escuadrón.
+Integra a un mentor para la visión holística y
+a un asesor técnico para auditar el modelo
+financiero antes de pedir dinero.
