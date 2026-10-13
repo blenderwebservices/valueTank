@@ -20,15 +20,15 @@ export default function AcademyView({ modules }) {
   return (
     <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="border-b border-slate-800 pb-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/20">
+      <div className="border-b border-slate-200 dark:border-slate-800 pb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/20">
           <BookOpen size={14} />
           <span>Biblioteca de Conocimiento</span>
         </div>
-        <h1 className="text-3xl font-black text-white tracking-tight">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
           El Código de la Valuación: Lecciones Maestras
         </h1>
-        <p className="text-slate-400 text-sm mt-1">
+        <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
           Guía integral basada en el PDF original y la infografía estratégica para fundadores.
         </p>
 
@@ -41,7 +41,7 @@ export default function AcademyView({ modules }) {
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 selectedCategory === c.id
                   ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-800'
               }`}
             >
               {c.label}
@@ -51,31 +51,31 @@ export default function AcademyView({ modules }) {
       </div>
 
       {/* Special Feature Card: Mentores vs Asesores (Page 9-11 of PDF) */}
-      <div className="glass-panel p-6 md:p-8 rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950">
+      <div className="glass-panel p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-500/20">
             <Users size={20} />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">El Escuadrón de Respaldo</h3>
-            <p className="text-xs text-slate-400">Mentores (Founders Exitosos) vs Asesores Financieros (Consultores Técnicos)</p>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">El Escuadrón de Respaldo</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Mentores (Founders Exitosos) vs Asesores Financieros (Consultores Técnicos)</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-          <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-            <h4 className="font-bold text-sm text-emerald-400 mb-1">El Mentor (Founder Experimentado)</h4>
-            <p className="text-xs text-slate-300 mb-2">Visión holística, contactos clave, red de apoyo y cómo no equivocarse en etapa semilla.</p>
-            <div className="text-[11px] font-mono text-slate-400 border-t border-slate-800 pt-2">
-              Compensación estándar: <strong className="text-white">0.25% a 1.0% de Equity</strong> con vesting a 1-2 años bajo contrato <strong>FAST</strong> (Founder Advisor Standard Template).
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <h4 className="font-bold text-sm text-emerald-600 dark:text-emerald-400 mb-1">El Mentor (Founder Experimentado)</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">Visión holística, contactos clave, red de apoyo y cómo no equivocarse en etapa semilla.</p>
+            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+              Compensación estándar: <strong className="text-slate-900 dark:text-white">0.25% a 1.0% de Equity</strong> con vesting a 1-2 años bajo contrato <strong>FAST</strong> (Founder Advisor Standard Template).
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-            <h4 className="font-bold text-sm text-cyan-400 mb-1">El Asesor Financiero (Consultor Técnico)</h4>
-            <p className="text-xs text-slate-300 mb-2">Modelos financieros, DCF formal, due diligence, estructuración pre-ronda y auditoría.</p>
-            <div className="text-[11px] font-mono text-slate-400 border-t border-slate-800 pt-2">
-              Compensación estándar: <strong className="text-white">Honorarios / Retainer mensual</strong> o porcentaje de éxito en levantamiento de capital.
+          <div className="p-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <h4 className="font-bold text-sm text-cyan-600 dark:text-cyan-400 mb-1">El Asesor Financiero (Consultor Técnico)</h4>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">Modelos financieros, DCF formal, due diligence, estructuración pre-ronda y auditoría.</p>
+            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+              Compensación estándar: <strong className="text-slate-900 dark:text-white">Honorarios / Retainer mensual</strong> o porcentaje de éxito en levantamiento de capital.
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function AcademyView({ modules }) {
               className={`rounded-2xl border transition-all ${
                 isExpanded 
                   ? 'glass-panel border-emerald-500/40 shadow-xl' 
-                  : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
+                  : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-xs'
               }`}
             >
               <button
@@ -100,13 +100,13 @@ export default function AcademyView({ modules }) {
               >
                 <div className="flex items-center gap-4">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
-                    isExpanded ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-400'
+                    isExpanded ? 'bg-emerald-500 text-slate-950' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
                   }`}>
                     {mod.order}
                   </div>
                   <div>
-                    <h3 className="font-bold text-base text-white">{mod.title}</h3>
-                    <p className="text-xs text-slate-400 mt-0.5">{mod.subtitle || mod.summary}</p>
+                    <h3 className="font-bold text-base text-slate-900 dark:text-white">{mod.title}</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{mod.subtitle || mod.summary}</p>
                   </div>
                 </div>
 
@@ -116,15 +116,15 @@ export default function AcademyView({ modules }) {
               </button>
 
               {isExpanded && (
-                <div className="px-6 pb-6 pt-2 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-                  <div className="prose prose-invert max-w-none text-xs md:text-sm whitespace-pre-line leading-relaxed">
+                <div className="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800/80 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+                  <div className="prose dark:prose-invert max-w-none text-xs md:text-sm whitespace-pre-line leading-relaxed text-slate-700 dark:text-slate-300">
                     {mod.content_markdown}
                   </div>
 
-                  <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-start gap-2.5">
-                    <CheckCircle2 size={16} className="shrink-0 text-emerald-400 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs flex items-start gap-2.5">
+                    <CheckCircle2 size={16} className="shrink-0 text-emerald-500 dark:text-emerald-400 mt-0.5" />
                     <div>
-                      <strong className="block text-emerald-200 mb-0.5">Lección Clave:</strong>
+                      <strong className="block text-emerald-900 dark:text-emerald-200 mb-0.5">Lección Clave:</strong>
                       <span>{mod.key_takeaway}</span>
                     </div>
                   </div>

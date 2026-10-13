@@ -192,16 +192,16 @@ export default function PitchWizard({
       {/* Title & Wizard Tracker */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-white tracking-tight">
+          <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             Motor de Valuación & Simulador
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
-            Los 4 Módulos de <strong className="text-emerald-400">El Código de la Valuación</strong> para estructurar y validar tu pitch.
+          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+            Los 4 Módulos de <strong className="text-emerald-600 dark:text-emerald-400">El Código de la Valuación</strong> para estructurar y validar tu pitch.
           </p>
         </div>
 
         {/* Steps Breadcrumbs */}
-        <div className="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+        <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-100 dark:bg-slate-900/90 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
           {[
             { n: 1, label: '1. Oferta Implícita' },
             { n: 2, label: '2. Motor Financiero' },
@@ -215,8 +215,8 @@ export default function PitchWizard({
                 currentStep === s.n 
                   ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20' 
                   : currentStep > s.n 
-                    ? 'text-emerald-400 hover:bg-slate-800' 
-                    : 'text-slate-500 hover:text-slate-300'
+                    ? 'text-emerald-600 dark:text-emerald-400 hover:bg-slate-200/60 dark:hover:bg-slate-800' 
+                    : 'text-slate-500 hover:text-slate-800 dark:text-slate-500 dark:hover:text-slate-300'
               }`}
             >
               {s.label}
@@ -230,18 +230,18 @@ export default function PitchWizard({
         <div className="space-y-6 animate-in slide-in-from-right-4 duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Input Controls */}
-            <div className="lg:col-span-2 glass-panel p-6 md:p-8 rounded-3xl border border-slate-800 space-y-6">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div className="lg:col-span-2 glass-panel p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Calculator className="text-emerald-400" size={20} />
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Calculator className="text-emerald-500 dark:text-emerald-400" size={20} />
                     Módulo 1: La Matemática de la Oferta Implícita
                   </h3>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     Define cuánto capital pides y cuánto equity estás dispuesto a ceder.
                   </p>
                 </div>
-                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
                   Paso 1 de 4
                 </span>
               </div>
@@ -249,24 +249,24 @@ export default function PitchWizard({
               {/* Startup Identity */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                     Nombre de la Empresa
                   </label>
                   <input
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
                     Sector de la Empresa
                   </label>
                   <select
                     value={industryId}
                     onChange={(e) => setIndustryId(Number(e.target.value))}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
                   >
                     {industries.map((ind) => (
                       <option key={ind.id} value={ind.id}>
@@ -278,12 +278,12 @@ export default function PitchWizard({
               </div>
 
               {/* Ask Amount Slider */}
-              <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
+              <div className="bg-slate-50 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-xs">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Capital Solicitado al Tanque ($ MXN)
                   </label>
-                  <span className="text-xl font-black font-mono text-white">
+                  <span className="text-xl font-black font-mono text-slate-900 dark:text-white">
                     {formatCurrency(askAmount)}
                   </span>
                 </div>
@@ -294,9 +294,9 @@ export default function PitchWizard({
                   step="50000"
                   value={askAmount}
                   onChange={(e) => setAskAmount(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg cursor-pointer"
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer"
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 font-mono">
+                <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                   <span>$100,000</span>
                   <span>$10,000,000</span>
                   <span>$20,000,000+</span>
@@ -304,12 +304,12 @@ export default function PitchWizard({
               </div>
 
               {/* Equity Offered Slider */}
-              <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
+              <div className="bg-slate-50 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 shadow-xs">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Equity Ofrecido (% de Participación)
                   </label>
-                  <span className="text-xl font-black font-mono text-emerald-400">
+                  <span className="text-xl font-black font-mono text-emerald-600 dark:text-emerald-400">
                     {equityOffered}%
                   </span>
                 </div>
@@ -320,9 +320,9 @@ export default function PitchWizard({
                   step="0.5"
                   value={equityOffered}
                   onChange={(e) => setEquityOffered(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg cursor-pointer"
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer"
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 font-mono">
+                <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                   <span>1% (Ronda Ángel)</span>
                   <span>10% - 20% (Estándar Shark Tank)</span>
                   <span>50% (Peligro Dilución)</span>
@@ -341,44 +341,44 @@ export default function PitchWizard({
             </div>
 
             {/* Real-time Math Display */}
-            <div className="glass-panel p-6 md:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+            <div className="glass-panel p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">
                   Declaración Absoluta de Valor
                 </span>
-                <h4 className="text-xl font-black text-white mb-4">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white mb-4">
                   Tu Valuación Implícita
                 </h4>
 
-                <div className="bg-gradient-to-br from-slate-900 to-emerald-950/60 border border-emerald-500/30 p-6 rounded-2xl text-center shadow-inner mb-6">
-                  <p className="text-xs text-emerald-400 font-bold mb-1">
+                <div className="bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-100 dark:from-slate-900 dark:to-emerald-950/60 border border-emerald-500/30 p-6 rounded-2xl text-center shadow-inner mb-6">
+                  <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold mb-1">
                     {formatCurrency(askAmount)} ÷ {equityOffered}%
                   </p>
-                  <div className="text-3xl md:text-4xl font-black font-mono text-white tracking-tight my-2">
+                  <div className="text-3xl md:text-4xl font-black font-mono text-slate-900 dark:text-white tracking-tight my-2">
                     {formatCurrency(results.implicit)}
                   </div>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400">
                     Al pedir este monto, le dices al mercado que tu compañía vale esta cifra exacta.
                   </p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 rounded-2xl border border-slate-800 space-y-2.5 text-xs text-slate-300">
+                <div className="p-4 bg-white dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2.5 text-xs text-slate-600 dark:text-slate-300 shadow-xs">
                   <div className="flex items-start gap-2">
-                    <ShieldCheck size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+                    <ShieldCheck size={16} className="text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                     <span><strong>Sector:</strong> {selectedIndustry?.name}</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <TrendingUp size={16} className="text-cyan-400 shrink-0 mt-0.5" />
+                    <TrendingUp size={16} className="text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                     <span><strong>Múltiplo Referencial:</strong> {selectedIndustry?.default_ebitda_multiple}x EBITDA</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <AlertCircle size={16} className="text-amber-400 shrink-0 mt-0.5" />
-                    <span>Para respaldar esta cifra a un múltiplo de {selectedIndustry?.default_ebitda_multiple}x, necesitarías generar aproximadamente <strong className="text-white font-mono">{formatCurrency(results.implicit / selectedIndustry?.default_ebitda_multiple)}</strong> de EBITDA anual.</span>
+                    <AlertCircle size={16} className="text-amber-500 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <span>Para respaldar esta cifra a un múltiplo de {selectedIndustry?.default_ebitda_multiple}x, necesitarías generar aproximadamente <strong className="text-slate-900 dark:text-white font-mono">{formatCurrency(results.implicit / selectedIndustry?.default_ebitda_multiple)}</strong> de EBITDA anual.</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 text-center">
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400 text-center">
                 “Cada oferta que presentas es una declaración jurada del valor total de tu empresa.”
               </div>
             </div>
